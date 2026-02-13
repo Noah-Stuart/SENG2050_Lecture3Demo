@@ -10,7 +10,7 @@ public class Main {
   public static void main(String[] args) {
     // Create Tomcat instance
     Tomcat tomcat = new Tomcat();
-    tomcat.setPort(8080); // Set server port
+    tomcat.setPort(8090); // Set server port
 
     // Ensure a base directory for Tomcat
     tomcat.setBaseDir("temp");
@@ -28,17 +28,16 @@ public class Main {
       System.out.println("Directory does not exist or is not a directory.");
     }
 
-
     if (ctx == null) {
       throw new RuntimeException("Tomcat context initialization failed!");
     }
 
     // Add a servlet
-    tomcat.addServlet("", "LoginServlet", new LoginServlet()); 
-    tomcat.addServlet("", "SessionServlet", new SessionServlet()); 
-    tomcat.addServlet("", "RetrieveSessionServlet", new RetrieveSessionServlet()); 
-    tomcat.addServlet("", "LogoutServlet", new LogoutServlet()); 
-    tomcat.addServlet("", "ProductServlet", new ProductServlet()); 
+    tomcat.addServlet("", "LoginServlet", new LoginServlet());
+    tomcat.addServlet("", "SessionServlet", new SessionServlet());
+    tomcat.addServlet("", "RetrieveSessionServlet", new RetrieveSessionServlet());
+    tomcat.addServlet("", "LogoutServlet", new LogoutServlet());
+    tomcat.addServlet("", "ProductServlet", new ProductServlet());
 
     // Map the servlet
     ctx.addServletMappingDecoded("/LoginServlet", "LoginServlet");
@@ -46,7 +45,7 @@ public class Main {
     ctx.addServletMappingDecoded("/RetrieveSessionServlet", "RetrieveSessionServlet");
     ctx.addServletMappingDecoded("/LogoutServlet", "LogoutServlet");
     ctx.addServletMappingDecoded("/ProductServlet", "ProductServlet");
- 
+
     // Start Tomcat
     try {
       tomcat.getConnector();
